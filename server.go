@@ -1,27 +1,33 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+  "github.com/joho/godotenv"
+  "github.com/gofiber/fiber/v2"
+  "alumnus/database"
+  "os"
+  "fmt"
 )
 
-func main(){
-
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
-        fmt.Fprintf(w, "Root")
-	})
-	
-	http.HandleFunc("/profile", func(w http.ResponseWriter, r *http.Request){
-        fmt.Fprintf(w, "profile")
-	})
-	
-	http.HandleFunc("/dashboard", func(w http.ResponseWriter, r *http.Request){
-        fmt.Fprintf(w, "dash")
+func main() {
+  godotenv.Load()
+  connected,err := mongodb.Connect(os.Getenv("DBUSER"),os.Getenv("DBPASS"))
+  if(err!=nil) {
+    fmt.Println(err)
+  } else if(connected){
+    fmt.Println("Connected to database")
+    app := fiber.New()
+    app.Get("/login", func(c *fiber.Ctx) error {
+      return c.SendString("Login post")
     })
 
-	fmt.Printf("Starting server at port 3000\n")
-    if err := http.ListenAndServe("localhost:3000", nil); err != nil {
-        log.Fatal(err)
-	}
+    app.Get("/signup", func(c *fiber.Ctx) error {
+      return c.SendString("signup post")
+    })
+
+    app.Use(func(c *fiber.Ctx) error {
+      return c.SendStatus(404)
+    })
+
+    app.Listen("localhost:8000") 
+  }
 }

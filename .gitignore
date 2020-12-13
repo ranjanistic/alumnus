@@ -40,6 +40,9 @@ Thumbs.db
 *.exe
 *.war
 
+# Environment vars
+.env
+
 # Large media files
 *.mp4
 *.tiff
@@ -48,3 +51,5 @@ Thumbs.db
 *.mov
 *.wmv
 tmp
+vendor
+go.sum
