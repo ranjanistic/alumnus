@@ -1,7 +1,7 @@
 package database
 
 import (
-	"alumnus/config"
+	"github.com/ranjanistic/alumnus/config"
 	"context"
 	"log"
 	"time"

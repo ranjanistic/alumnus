@@ -1,4 +1,4 @@
-module alumnus
+module github.com/ranjanistic/alumnus
 
 go 1.15
 

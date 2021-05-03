@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"alumnus/config"
-	"alumnus/database"
+	"github.com/ranjanistic/alumnus/config"
+	"github.com/ranjanistic/alumnus/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -18,7 +18,7 @@ func main() {
 	fmt.Printf("Env: %s \n", config.Env.ENV)
 	database.ConnectToDB(func(Users *mongo.Collection) {
 		engine := html.New("./templates", ".html")
-		app := fiber.New(fiber.Config{Views: engine})
+		app := fiber.New(fiber.Config{Views: engine, Prefork: config.Env.ENV == "production"})
 		app.Static("/", "./static")
 		auth := app.Group("/auth")
 		auth.Get("/login",func(c *fiber.Ctx) error {
