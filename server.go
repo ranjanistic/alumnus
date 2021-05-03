@@ -21,7 +21,7 @@ func main() {
 		app.Static("/", "./static")
 		auth := app.Group("/auth")
 		auth.Get("/login",func(c *fiber.Ctx) error {
-			return c.JSON(fiber.Map{"status":200})
+			return c.JSON(fiber.Map{"status":nil})
 		})
 		app.Get("/", func(c *fiber.Ctx) error {
 			return c.Render("index", fiber.Map{
