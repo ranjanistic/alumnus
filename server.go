@@ -12,8 +12,7 @@ import (
 
 func main() {
 	if config.Env.ERR != nil {
-		fmt.Printf("Environment error: %s \n", config.Env.ERR)
-		return
+		fmt.Printf("Local Environment: %s \n", config.Env.ERR)
 	}
 	fmt.Printf("Env: %s \n", config.Env.ENV)
 	database.ConnectToDB(func(Users *mongo.Collection) {

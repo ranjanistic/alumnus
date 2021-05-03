@@ -5,8 +5,6 @@ import (
 	"os"
 )
 
-var Err = godotenv.Load()
-
 type Environment struct{
 	ERR error
 	APPNAME string ""
