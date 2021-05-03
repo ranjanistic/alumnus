@@ -11,6 +11,7 @@ type Environment struct{
 	ENV string ""
 	DBURL string ""
 	DBNAME string ""
+	PORT string ""
 }
 
 var Env = Environment{
@@ -19,4 +20,5 @@ var Env = Environment{
 	ENV: os.Getenv("ENV"),
 	DBURL: os.Getenv("DBURL"),
 	DBNAME: os.Getenv("DBNAME"),
+	PORT: os.Getenv("PORT"),
 }

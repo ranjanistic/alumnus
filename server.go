@@ -28,6 +28,6 @@ func main() {
 				"title": config.Env.APPNAME,
 			})
 		})
-		app.Listen(":3000")
+		app.Listen(":"+config.Env.PORT)
 	})
 }
