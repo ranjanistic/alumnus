@@ -12,6 +12,10 @@ type Environment struct{
 	DBURL string ""
 	DBNAME string ""
 	PORT string ""
+	SESSIONKEY string ""
+	SITE string ""
+	AUTH0SEC string ""
+	DEV bool
 }
 
 var Env = Environment{
@@ -21,4 +25,8 @@ var Env = Environment{
 	DBURL: os.Getenv("DBURL"),
 	DBNAME: os.Getenv("DBNAME"),
 	PORT: os.Getenv("PORT"),
+	SESSIONKEY: os.Getenv("SESSIONKEY"),
+	SITE:os.Getenv("SITE"),
+	AUTH0SEC:os.Getenv("AUTH0SEC"),
+	DEV: os.Getenv("ENV") != "production",
 }
